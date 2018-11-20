@@ -31,3 +31,11 @@ for game in csv_file:
     home_odds = float(game[23])
     draw_odds = float(game[24])
     away_odds = float(game[25])
+
+    if home_odds > away_odds:
+        if home_goals > away_goals:
+            upsets +=1
+            bankroll += wagering_size * (home_odds-1)
+        else:
+            non_upsets += 1
+            bankroll -= wagering_size 
