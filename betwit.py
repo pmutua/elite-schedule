@@ -1,6 +1,6 @@
 import csv
 
-csv_file = csv.reader(open('20152016.csv'))
+csv_file = csv.reader(open('E1.csv'))
 next(csv_file)
 
 upsets = 0
@@ -35,3 +35,5 @@ ROI = ((bankroll - starting_bankroll) / (wagering_size * (upsets + non_upsets)))
 print ("There were '%s' upsets out of '%s' total matches" % (upsets, upsets + non_upsets))
 print ("Starting bankroll = '%s'" % (starting_bankroll))
 print ("Finishing bankroll = '%s' | ROI = '%s'" % (bankroll, ROI))
+
+
