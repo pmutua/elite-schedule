@@ -1,40 +1,29 @@
 from django.shortcuts import render
-import openpyxl
-
+import csv
 
 def index(request):
     if "GET" == request.method:
-        return render(request, 'myapp/index.html', {})
+        return render(request, 'elite_schedule/index.html', {})
     else:
-        excel_file = request.FILES["excel_file"]
+        csv_file = request.FILES["csv_file"]
 
         # you may put validations here to check extension or file size
+        csv_file = csv.reader(open('E1.csv'))
+        next(csv_file)
 
-        wb = openpyxl.load_workbook(excel_file)
-
-        # getting all sheets
-        sheets = wb.sheetnames
-        print(sheets)
-
-        # getting a particular sheet
-        worksheet = wb["Sheet1"]
-        print(worksheet)
-
-        # getting active sheet
-        active_sheet = wb.active
-        print(active_sheet)
-
-        # reading a cell
-        print(worksheet["A1"].value)
-
-        excel_data = list()
-        # iterating over the rows and
-        # getting value from each cell in row
-        for row in worksheet.iter_rows():
+        csv_data = list()
+        for game in csv_file:
             row_data = list()
-            for cell in row:
-                row_data.append(str(cell.value))
-                print(cell.value)
-            excel_data.append(row_data)
+            home_team = game[2]
+            away_team = game[3]
 
-        return render(request, 'myapp/index.html', {"excel_data":excel_data})
+            home_goals = int(game[4])
+            away_goals = int(game[5])
+
+            home_odds = float(game[23])
+            draw_odds = float(game[24])
+            away_odds = float(game[25])
+
+            csv_data.append(row_data)
+
+        return render(request, 'elite_schedule/index.html', {"csv_data":csv_data})
