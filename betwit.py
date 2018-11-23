@@ -21,6 +21,7 @@ for game in csv_file:
 	home_odds = float(game[23])
 	draw_odds = float(game[24])
 	away_odds = float(game[25])
+	print(game[2])
 
 	if home_odds > away_odds:
 		if home_goals > away_goals:
