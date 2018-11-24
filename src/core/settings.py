@@ -121,7 +121,7 @@ REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+        # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
 }
 
@@ -144,7 +144,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-
+# Use this static if you are using redoc 
+# STATIC_URL = 'https://storage.googleapis.com/authstatic/static/'
 # Django Debug Tool Bar settings 
 
 
@@ -168,3 +169,12 @@ DEBUG_TOOLBAR_PANELS = [
     'debug_toolbar.panels.logging.LoggingPanel',
     'debug_toolbar.panels.redirects.RedirectsPanel',
 ]
+
+
+# Swagger Redoc settings 
+
+SWAGGER_SETTINGS = {
+    
+    'VALIDATOR_URL': 'http://localhost:8189',
+    
+}
