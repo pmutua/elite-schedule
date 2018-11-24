@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf import settings
 from django.contrib import admin
-from django.urls import include,path
+from django.conf.urls import include,url
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
@@ -36,13 +36,13 @@ schema_view = get_schema_view(
 )
 
 urlpatterns = [
-    path(r'^api-auth/', include('rest_framework.urls')),
-    path('admin/', admin.site.urls),
+    url(r'^api-auth/', include('rest_framework.urls')),
+    url('admin/', admin.site.urls),
     # adding '' results to redirecting to root 
-    path('elite_schedule', include('elite_schedule.urls', namespace="elite_schedule")),
-    path(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
-    path(r'^swagger/$', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
-    path(r'^redoc/$', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
+    url('elite_schedule', include('elite_schedule.urls', namespace="elite_schedule")),
+    url(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
+    url(r'^swagger/$', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    url(r'^redoc/$', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     # change redoc to  '' 
 ]
 
@@ -50,7 +50,7 @@ urlpatterns = [
 if settings.DEBUG:
     import debug_toolbar
     urlpatterns = [
-        path('__debug__/', include(debug_toolbar.urls)),
+        url('__debug__/', include(debug_toolbar.urls)),
 
         # For django versions before 2.0:
         # url(r'^__debug__/', include(debug_toolbar.urls)),
