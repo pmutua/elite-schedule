@@ -31,22 +31,22 @@ class Command(BaseCommand):
         with open(file_path) as f:
             reader = csv.reader(f)
             for game in reader:
-                div = game[0]
+                division = game[0]
                 date=game[1]
                 home_team = game[2]
                 away_team = game[3]
 
-                home_goal = int(game[4])
-                away_goal = int(game[5])
-
-                home_odd = float(game[23])
-                draw_odd = float(game[24])
-                away_odd = float(game[25])
+                home_goal = game[4]
+                away_goal = game[5]
+                print(home_goal)
+                home_odd = game[23]
+                draw_odd = game[24]
+                away_odd = game[25]
                     # let's skip the column captions
                 # continue
                 match, created = \
                 Match.objects.get_or_create(
-                div=div,
+                division=division,
                 date=date,
                 home_team=home_team,
                 away_team=away_team,
@@ -57,4 +57,4 @@ class Command(BaseCommand):
                 away_odd=away_odd
                 )
                 if verbosity >= NORMAL:
-                    self.stdout.write("{}. {}".format(game, match.div))
+                    self.stdout.write("{}. {}".format(game, match.division))
