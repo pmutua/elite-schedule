@@ -48,7 +48,7 @@ class Command(BaseCommand):
                 away_odd = game[25]
                     # let's skip the column captions
                 # continue
-                if division == "E1":
+                if division == "E1" or "E2" or "E3":
                     country = "ENGLAND"
                     match, created = \
                     Match.objects.get_or_create(
