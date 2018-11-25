@@ -12,9 +12,9 @@ SILENT, NORMAL, VERBOSE, VERY_VERBOSE = 0, 1, 2, 3
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-x=os.path.join(BASE_DIR, 'matches.csv')
+csv_files = ['bundesliga_1.csv','bundesliga_2.csv','eng_championship.csv','eng_conference.csv','eng_league_1.csv','eng_league_2.csv','eng_premier_league.csv','la_liga_primiera_division.csv',' La_Liga_Segunda Division.csv','seria_a.csv','seria_b.csv']
 
-
+CSV_FOLDER_PATH = os.path.join(BASE_DIR, "data")
 
 class Command(BaseCommand):
     help = ("Imports movies from a local CSV file. " "Expects title, URL, and release year.")
@@ -26,42 +26,36 @@ class Command(BaseCommand):
     
     def handle(self, *args, **options):
         verbosity = options.get("verbosity", NORMAL)
-        file_path = x
-        print(file_path)
-        if verbosity >= NORMAL:
-            self.stdout.write("=== Matches imported ===")
-        with open(file_path) as f:
-            reader = csv.reader(f)
-            # Dont upload header froom csv 
-            next(reader)
-            for game in reader:
-                division = game[0]
-                date=game[1]
-                home_team = game[2]
-                away_team = game[3]
+        for csv_file in csv_files:
 
-                home_goal = game[4]
-                away_goal = game[5]
-                print(home_goal)
-                home_odd = game[23]
-                draw_odd = game[24]
-                away_odd = game[25]
-                    # let's skip the column captions
-                # continue
-                """Assign country based on division.
-                   to get divisions code details check football.uk
-                """ 
-                try: 
-                    if division == "E1" or "E2" or "E3":
-                        country = "ENGLAND"
-                    elif division == "S1":
-                        country = "SPAIN"
-                    elif division == "G1":
-                        country="GERMANY"
-                    elif division == "I1":
-                        country = "ITALY"
-                    
-                    
+            file_path = CSV_FILE_PATH = os.path.join(CSV_FOLDER_PATH,str(csv_file))
+            print(file_path)
+            if verbosity >= NORMAL:
+                self.stdout.write("=== Matches imported ===")
+            with open(file_path) as f:
+                reader = csv.reader(f)
+                # Dont upload header froom csv 
+                next(reader)
+                for game in reader:
+                    division = game[0]
+                    date=game[1]
+                    home_team = game[2]
+                    away_team = game[3]
+
+                    home_goal = game[4]
+                    away_goal = game[5]
+                    print(home_goal)
+                    home_odd = game[23]
+                    draw_odd = game[24]
+                    away_odd = game[25]
+                    print(game)
+                        # let's skip the column captions
+                    # continue
+                    """Assign country based on division.
+                    to get divisions code details check football.uk
+                    """ 
+                    try: 
+                             
                         match, created = \
                         Match.objects.get_or_create(
                         division=division,
@@ -72,11 +66,10 @@ class Command(BaseCommand):
                         away_goal=away_goal,
                         home_odd=home_odd,
                         draw_odd=draw_odd,
-                        away_odd=away_odd,
-                        country=country
+                        away_odd=away_odd
                         )
                         if verbosity >= NORMAL:
                             self.stdout.write("{}. {}".format(game, match.division))
-                except Exception as e:
-                    raise e 
-    
+                    except Exception as e:
+                        raise e 
+        
