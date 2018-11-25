@@ -1,4 +1,8 @@
 # -*- coding: UTF-8 -*-
+"""
+    Author: Philip Mutua 
+    Github: @pmutua
+"""
 from __future__ import unicode_literals
 import csv
 from django.core.management.base import BaseCommand
@@ -31,6 +35,13 @@ class Command(BaseCommand):
                 date=game[1]
                 home_team = game[2]
                 away_team = game[3]
+
+                home_goal = int(game[4])
+                away_goal = int(game[5])
+
+                home_odd = float(game[23])
+                draw_odd = float(game[24])
+                away_odd = float(game[25])
                     # let's skip the column captions
                 # continue
                 match, created = \
@@ -39,6 +50,11 @@ class Command(BaseCommand):
                 date=date,
                 home_team=home_team,
                 away_team=away_team,
+                home_goal =home_goal,
+                away_goal=away_goal,
+                home_odd=home_odd,
+                draw_odd=draw_odd,
+                away_odd=away_odd
                 )
                 if verbosity >= NORMAL:
                     self.stdout.write("{}. {}".format(game, match.div))
