@@ -29,6 +29,6 @@ class Match(models.Model):
     home_odd = models.CharField(max_length=20)
     draw_odd = models.CharField(max_length=20)
     away_odd = models.CharField(max_length=20)
-    country = models.CharField(max_length=20,choices=COUNTRY_CHOICE)  # Choices is a list of Tuple)
+    country = models.CharField(max_length=20,choices=COUNTRY_CHOICE)  
 
     objects = MatchManager()
