@@ -48,20 +48,35 @@ class Command(BaseCommand):
                 away_odd = game[25]
                     # let's skip the column captions
                 # continue
-                if division == "E1" or "E2" or "E3":
-                    country = "ENGLAND"
-                    match, created = \
-                    Match.objects.get_or_create(
-                    division=division,
-                    date=date,
-                    home_team=home_team,
-                    away_team=away_team,
-                    home_goal =home_goal,
-                    away_goal=away_goal,
-                    home_odd=home_odd,
-                    draw_odd=draw_odd,
-                    away_odd=away_odd,
-                    country=country
-                    )
-                    if verbosity >= NORMAL:
-                        self.stdout.write("{}. {}".format(game, match.division))
+                """Assign country based on division.
+                   to get divisions code details check football.uk
+                """ 
+                try: 
+                    if division == "E1" or "E2" or "E3":
+                        country = "ENGLAND"
+                    elif division == "S1":
+                        country = "SPAIN"
+                    elif division == "G1":
+                        country="GERMANY"
+                    elif division == "I1":
+                        country = "ITALY"
+                    
+                    
+                        match, created = \
+                        Match.objects.get_or_create(
+                        division=division,
+                        date=date,
+                        home_team=home_team,
+                        away_team=away_team,
+                        home_goal =home_goal,
+                        away_goal=away_goal,
+                        home_odd=home_odd,
+                        draw_odd=draw_odd,
+                        away_odd=away_odd,
+                        country=country
+                        )
+                        if verbosity >= NORMAL:
+                            self.stdout.write("{}. {}".format(game, match.division))
+                except Exception as e:
+                    raise e 
+    

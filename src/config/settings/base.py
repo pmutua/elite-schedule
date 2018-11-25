@@ -12,3 +12,5 @@ EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND', default='django.core.mail.backends.s
 ADMIN_URL = env('DJANGO_ADMIN_URL', default=r'^admin/')
  
 PASSWORD_HASHERS = ['django.contrib.auth.hashers.Argon2PasswordHasher', (...)] # add this object at the beginning of the list
+
+WSGI_APPLICATION = 'core.wsgi.application'
