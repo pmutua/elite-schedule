@@ -5,5 +5,6 @@ from . import views
 app_name = "elite_schedule"
 
 urlpatterns = [
-    url('', views.index, name='index'),
+    url('upload', views.index, name='index'),
+    url('matches',views.MatchListAPIView.as_view(), name='matches')
 ]

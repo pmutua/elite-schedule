@@ -20,7 +20,12 @@ from django.db import models
 # from . import app_settings
 
 class Match(models.Model):
-    div= models.CharField(max_length=20)
+    division= models.CharField(max_length=20)
     date=models.CharField(max_length=20)
     home_team=models.CharField(max_length=20)
     away_team=models.CharField(max_length=20)
+    home_goals = models.InterField()
+    away_goals = models.InterField()
+    home_odds = models.FloatField()
+    draw_odds = models.FloatField()
+    away_odds = models.FloatField()
