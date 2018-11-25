@@ -19,6 +19,18 @@ from django.db import models
 # # Current-app modules
 # from . import app_settings
 
+
+
+class MatchManager(models.Manager):
+    # Add query by divisions ie EPL,Laliga etc
+    def e_1_division(self):
+        return self.filter(division='E1')
+    def accepted(self):
+        return  self.filter(bid_status='ACCEPTED')
+
+# TODO division choices 
+        
+
 class Match(models.Model):
     division= models.CharField(max_length=20)
     date=models.CharField(max_length=20)
@@ -29,3 +41,5 @@ class Match(models.Model):
     home_odd = models.CharField(max_length=20)
     draw_odd = models.CharField(max_length=20)
     away_odd = models.CharField(max_length=20)
+
+    objects = MatchManager()

@@ -30,6 +30,8 @@ class Command(BaseCommand):
             self.stdout.write("=== Matches imported ===")
         with open(file_path) as f:
             reader = csv.reader(f)
+            # Dont upload header froom csv 
+            next(reader)
             for game in reader:
                 division = game[0]
                 date=game[1]

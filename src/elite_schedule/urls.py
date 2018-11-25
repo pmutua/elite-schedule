@@ -1,10 +1,18 @@
-from django.conf.urls  import include,url
+# from django.conf.urls import url
+# from elite_schedule import views
 
-from . import views
+# urlpatterns = [
+#     url(r'matches/', views.MatchAPIView.as_view(), name="matches"),
+#     url(r'team/', views.TeamSearchAPIView.as_view(), name="search_team"),
+    
+# ]
+from django.conf.urls import url
+from elite_schedule import views
+from rest_framework.routers import DefaultRouter
 
-app_name = "elite_schedule"
+router = DefaultRouter()
+router.register(r'match_histories', views.MatchHistoryViewset, base_name='match')
+router.register(r'england', views.EnglandViewSet, base_name='match')
 
-urlpatterns = [
-    url('upload', views.index, name='index'),
-    url('matches_history',views.MatchListAPIView.as_view(), name='matches_history')
-]
+
+urlpatterns = router.urls
