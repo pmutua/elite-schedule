@@ -40,6 +40,7 @@ class Match(models.Model):
         (EN,"ENGLAND"),
         (SP,"SPAIN"),
         (IT,"ITALY"),
+        (GE,"GERMANY"),
     )
 
     division= models.CharField(max_length=20)

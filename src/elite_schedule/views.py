@@ -74,60 +74,58 @@ class EnglandViewSet(viewsets.ViewSet, MethodSerializerView):
     }
 
     def list(self, request):
-        """List all bids."""
+        """List all matches played from English Leagues."""
         queryset = Match.objects.all()
         serializer = MatchSerializer(queryset, many=True)
         return Response(serializer.data)
 
     @action(detail=False)
-    def awaiting_bid_items(self, request):
-        """Lists down all awaiting bid items."""
-        awaiting_bid_items = Match.objects.awaiting()
-        serializer = MatchSerializer(awaiting_bid_items, many=True)
+    def league_1(self, request):
+        """Lists down all ."""
+        matches = Match.objects.awaiting()
+        serializer = MatchSerializer(matches, many=True)
         return Response(serializer.data)
 
     @action(detail=False)
-    def accepted_bid_items(self, request):
-        """Lists down all accepted bid items."""
-        accepted_bid_items = BidItem.objects.accepted()
-        serializer = self.get_serializer(accepted_bid_items, many=True)
+    def league_2(self, request):
+        """Lists down all."""
+        matches = Match.objects.accepted()
+        serializer = MatchSerializer(matches, many=True)
         return Response(serializer.data)
 
-# TODO dd viewsets in coutries 
 class SpainViewSet(viewsets.ViewSet, MethodSerializerView):
     """
-    A viewset that provides the standard actions POST,GET,DELETE,PUT.
+    A viewset that provides the standard action `GET`.
     """
     queryset = Match.objects.all()
     method_serializer_classes = {
         ('GET',): ser.MatchSerializer,
        
     }
-
     def list(self, request):
-        """List all bids."""
+        """List all matches from Spanish Leagues."""
         queryset = Match.objects.all()
         serializer = MatchSerializer(queryset, many=True)
         return Response(serializer.data)
 
     @action(detail=False)
-    def awaiting_bid_items(self, request):
-        """Lists down all awaiting bid items."""
-        awaiting_bid_items = Match.objects.awaiting()
-        serializer = MatchSerializer(awaiting_bid_items, many=True)
+    def league_1(self, request):
+        """Lists down all ."""
+        matches = Match.objects.awaiting()
+        serializer = MatchSerializer(matches, many=True)
         return Response(serializer.data)
 
     @action(detail=False)
-    def accepted_bid_items(self, request):
-        """Lists down all accepted bid items."""
-        accepted_bid_items = BidItem.objects.accepted()
-        serializer = self.get_serializer(accepted_bid_items, many=True)
+    def league_2(self, request):
+        """Lists down all."""
+        matches = Match.objects.accepted()
+        serializer = MatchSerializer(matches, many=True)
         return Response(serializer.data)
 
 
 class ItalyViewSet(viewsets.ViewSet, MethodSerializerView):
     """
-    A viewset that provides the standard actions POST,GET,DELETE,PUT.
+    A viewset that provides one standard action `GET`.
     """
     queryset = Match.objects.all()
     method_serializer_classes = {
@@ -136,21 +134,53 @@ class ItalyViewSet(viewsets.ViewSet, MethodSerializerView):
     }
 
     def list(self, request):
-        """List all bids."""
+        """List all matches from Italian Leagues."""
         queryset = Match.objects.all()
         serializer = MatchSerializer(queryset, many=True)
         return Response(serializer.data)
 
     @action(detail=False)
-    def awaiting_bid_items(self, request):
-        """Lists down all awaiting bid items."""
-        awaiting_bid_items = Match.objects.awaiting()
-        serializer = MatchSerializer(awaiting_bid_items, many=True)
+    def league_1(self, request):
+        """Lists down all ."""
+        matches = Match.objects.awaiting()
+        serializer = MatchSerializer(matches, many=True)
         return Response(serializer.data)
 
     @action(detail=False)
-    def accepted_bid_items(self, request):
-        """Lists down all accepted bid items."""
-        accepted_bid_items = BidItem.objects.accepted()
-        serializer = self.get_serializer(accepted_bid_items, many=True)
+    def league_2(self, request):
+        """Lists down all."""
+        matches = Match.objects.accepted()
+        serializer = MatchSerializer(matches, many=True)
+        return Response(serializer.data)
+
+
+
+class GermanyViewSet(viewsets.ViewSet, MethodSerializerView):
+    """
+    A viewset that provides one standard action `GET`.
+    """
+    queryset = Match.objects.all()
+    method_serializer_classes = {
+        ('GET'): ser.MatchSerializer,
+       
+    }
+
+    def list(self, request):
+        """List all matches from German Leagues."""
+        queryset = Match.objects.all()
+        serializer = MatchSerializer(queryset, many=True)
+        return Response(serializer.data)
+
+    @action(detail=False)
+    def league_1(self, request):
+        """Lists down all ."""
+        matches = Match.objects.awaiting()
+        serializer = MatchSerializer(matches, many=True)
+        return Response(serializer.data)
+
+    @action(detail=False)
+    def league_2(self, request):
+        """Lists down all."""
+        matches = Match.objects.accepted()
+        serializer = MatchSerializer(matches, many=True)
         return Response(serializer.data)
