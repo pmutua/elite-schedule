@@ -1,5 +1,5 @@
 from django.db import models
-
+from utils import CountryChoice 
 # Create your models here.
 
 # -*- coding: UTF-8 -*-
@@ -29,9 +29,19 @@ class MatchManager(models.Manager):
         return  self.filter(bid_status='ACCEPTED')
 
 # TODO division choices 
-        
+
 
 class Match(models.Model):
+    EN = 1
+    SP = 2
+    IT = 3
+    
+    COUNTRY_CHOICE = (
+        (EN,"ENGLAND"),
+        (SP,"SPAIN"),
+        (IT,"ITALY"),
+    )
+
     division= models.CharField(max_length=20)
     date=models.CharField(max_length=20)
     home_team=models.CharField(max_length=20)
@@ -41,5 +51,6 @@ class Match(models.Model):
     home_odd = models.CharField(max_length=20)
     draw_odd = models.CharField(max_length=20)
     away_odd = models.CharField(max_length=20)
+    country = models.CharField(max_length=20,choices=COUNTRY_CHOICE)  # Choices is a list of Tuple)
 
     objects = MatchManager()

@@ -21,7 +21,7 @@ from .models import (Match,)
 from elite_schedule import serializers as ser
 from .serializers import (MatchSerializer,)
 from .serializer_utility import MethodSerializerView
-
+import json 
 
 class MatchHistoryViewset(viewsets.ViewSet):
     """
@@ -69,7 +69,38 @@ class EnglandViewSet(viewsets.ViewSet, MethodSerializerView):
     """
     queryset = Match.objects.all()
     method_serializer_classes = {
-        ('GET','PUT','PATCH', 'DELETE',): ser.MatchSerializer,
+        ('GET'): ser.MatchSerializer,
+       
+    }
+
+    def list(self, request):
+        """List all bids."""
+        queryset = Match.objects.all()
+        serializer = MatchSerializer(queryset, many=True)
+        return Response(serializer.data)
+
+    @action(detail=False)
+    def awaiting_bid_items(self, request):
+        """Lists down all awaiting bid items."""
+        awaiting_bid_items = Match.objects.awaiting()
+        serializer = MatchSerializer(awaiting_bid_items, many=True)
+        return Response(serializer.data)
+
+    @action(detail=False)
+    def accepted_bid_items(self, request):
+        """Lists down all accepted bid items."""
+        accepted_bid_items = BidItem.objects.accepted()
+        serializer = self.get_serializer(accepted_bid_items, many=True)
+        return Response(serializer.data)
+
+# TODO dd viewsets in coutries 
+class SpainViewSet(viewsets.ViewSet, MethodSerializerView):
+    """
+    A viewset that provides the standard actions POST,GET,DELETE,PUT.
+    """
+    queryset = Match.objects.all()
+    method_serializer_classes = {
+        ('GET',): ser.MatchSerializer,
        
     }
 
@@ -94,5 +125,32 @@ class EnglandViewSet(viewsets.ViewSet, MethodSerializerView):
         return Response(serializer.data)
 
 
+class ItalyViewSet(viewsets.ViewSet, MethodSerializerView):
+    """
+    A viewset that provides the standard actions POST,GET,DELETE,PUT.
+    """
+    queryset = Match.objects.all()
+    method_serializer_classes = {
+        ('GET'): ser.MatchSerializer,
+       
+    }
 
-# TODO dd viewsets in coutries 
+    def list(self, request):
+        """List all bids."""
+        queryset = Match.objects.all()
+        serializer = MatchSerializer(queryset, many=True)
+        return Response(serializer.data)
+
+    @action(detail=False)
+    def awaiting_bid_items(self, request):
+        """Lists down all awaiting bid items."""
+        awaiting_bid_items = Match.objects.awaiting()
+        serializer = MatchSerializer(awaiting_bid_items, many=True)
+        return Response(serializer.data)
+
+    @action(detail=False)
+    def accepted_bid_items(self, request):
+        """Lists down all accepted bid items."""
+        accepted_bid_items = BidItem.objects.accepted()
+        serializer = self.get_serializer(accepted_bid_items, many=True)
+        return Response(serializer.data)

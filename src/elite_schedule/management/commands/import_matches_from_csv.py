@@ -14,6 +14,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 x=os.path.join(BASE_DIR, 'matches.csv')
 
+
+
 class Command(BaseCommand):
     help = ("Imports movies from a local CSV file. " "Expects title, URL, and release year.")
     
@@ -46,17 +48,20 @@ class Command(BaseCommand):
                 away_odd = game[25]
                     # let's skip the column captions
                 # continue
-                match, created = \
-                Match.objects.get_or_create(
-                division=division,
-                date=date,
-                home_team=home_team,
-                away_team=away_team,
-                home_goal =home_goal,
-                away_goal=away_goal,
-                home_odd=home_odd,
-                draw_odd=draw_odd,
-                away_odd=away_odd
-                )
-                if verbosity >= NORMAL:
-                    self.stdout.write("{}. {}".format(game, match.division))
+                if division == "E1":
+                    country = "ENGLAND"
+                    match, created = \
+                    Match.objects.get_or_create(
+                    division=division,
+                    date=date,
+                    home_team=home_team,
+                    away_team=away_team,
+                    home_goal =home_goal,
+                    away_goal=away_goal,
+                    home_odd=home_odd,
+                    draw_odd=draw_odd,
+                    away_odd=away_odd,
+                    country=country
+                    )
+                    if verbosity >= NORMAL:
+                        self.stdout.write("{}. {}".format(game, match.division))

@@ -1,9 +1,9 @@
 from enum import Enum
 
 class CountryChoice(Enum):   # A subclass of Enum
-    EN = "England"
-    SP = "Spain"
-    IT = "Italy"
+    EN = "ENGLAND"
+    SP = "SPAIN"
+    IT = "ITALY"
 
 
 class DivisionChoice(Enum):
