@@ -46,7 +46,8 @@ class TeamSearchAPIView(generics.ListAPIView):
     queryset = Match.objects.none()
 
     def get_queryset(self, *args, **kwargs):
-        """ This queries a team based on name parameters.
+        """This wil list all games a team has played either home or way.
+        This queries a team based on name parameters.
             for example  `team/search/?=arsenal`
         
         """        
@@ -58,9 +59,9 @@ class TeamSearchAPIView(generics.ListAPIView):
                 Q(home_team__icontains=query)|
                 Q(away_team__icontains=query)
             ).distinct()
-        serializer = self.get_serializer(queryset_list, many=True)
+        serializer =MatchSerializer(queryset_list, many=True)
         
-        return Response(data=serializer.data, status=status.HTTP_200_OK)
+        return queryset_list
 
 
 
