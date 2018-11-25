@@ -145,3 +145,15 @@ Response (application/json)
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](https://opensource.org/licenses/MIT) file for details
+
+6. Install DrfYasg
+   For additional usage examples, you can take a look at the test project in the testproj directory:
+
+$git clone https://github.com/axnsan12/drf-yasg.git$ cd drf-yasg
+$virtualenv venv$ source venv/bin/activate
+(venv) $cd testproj
+(venv)$ pip install -U -r requirements.txt
+(venv) $python manage.py migrate
+(venv)$ python manage.py shell -c "import createsuperuser"
+(venv) $python manage.py runserver
+(venv)$ firefox localhost:8000/swagger/
