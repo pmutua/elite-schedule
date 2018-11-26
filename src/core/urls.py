@@ -41,6 +41,7 @@ urlpatterns = [
     # adding '' results to redirecting to root 
     url('api/elite_schedule/', include('elite_schedule.urls')),
     url(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
+    # TODO leave this with '' to start as root
     url(r'^swagger/$', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     url(r'^redoc/$', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     # change redoc to  '' 
