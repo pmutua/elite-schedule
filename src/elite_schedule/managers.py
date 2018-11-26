@@ -30,8 +30,8 @@ class MatchManager(models.Manager):
         return  self.filter(division='S2')
       
     def seria_a(self):
-        return  self.filter(division='I3')
+        return  self.filter(division='I1')
     
     def seria_b(self):
-        return self.filter(division='I1')
+        return self.filter(division='I2')
  

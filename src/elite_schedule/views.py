@@ -13,14 +13,14 @@ from django.db.models import Q
 from rest_framework.filters import (
     SearchFilter
 )
-from elite_schedule.base_generic_view import BaseRetrieveUpdateDestroyView
+
 from django.shortcuts import render
 from rest_framework import generics
 
 from .models import (Match,)
 from elite_schedule import serializers as ser
 from .serializers import (MatchSerializer,)
-from .serializer_utility import MethodSerializerView
+
 import json 
 
 class MatchHistoryViewset(viewsets.ViewSet):
@@ -63,15 +63,12 @@ class TeamSearchAPIView(generics.ListAPIView):
         
         return queryset_list
 
-class EnglandViewSet(viewsets.ViewSet, MethodSerializerView):
+class EnglandMatchesViewSet(viewsets.ViewSet):
     """
     A viewset that provides the standard actions POST,GET,DELETE,PUT.
     """
     queryset = Match.objects.all()
-    method_serializer_classes = {
-        ('GET'): ser.MatchSerializer,
-       
-    }
+    serializer_class = MatchSerializer
 
     def list(self, request):
         """List all matches played from English Leagues."""
@@ -112,15 +109,13 @@ class EnglandViewSet(viewsets.ViewSet, MethodSerializerView):
         serializer = MatchSerializer(matches, many=True)
         return Response(serializer.data)
 
-class SpainViewSet(viewsets.ViewSet, MethodSerializerView):
+class SpainMatchesViewSet(viewsets.ViewSet):
     """
     A viewset that provides the standard action `GET`.
     """
     queryset = Match.objects.all()
-    method_serializer_classes = {
-        ('GET',): ser.MatchSerializer,
-       
-    }
+    serializer_class = MatchSerializer
+
     def list(self, request):
         """List all matches from Spanish Leagues."""
         queryset = Match.objects.filter(
@@ -145,15 +140,12 @@ class SpainViewSet(viewsets.ViewSet, MethodSerializerView):
         return Response(serializer.data)
 
 
-class GermanyViewSet(viewsets.ViewSet, MethodSerializerView):
+class GermanyMatchesViewSet(viewsets.ViewSet):
     """
     A viewset that provides one standard action `GET`.
     """
     queryset = Match.objects.all()
-    method_serializer_classes = {
-        ('GET'): ser.MatchSerializer,
-       
-    }
+    serializer_class = MatchSerializer
 
     def list(self, request):
         """List all matches from German Leagues."""
@@ -177,16 +169,13 @@ class GermanyViewSet(viewsets.ViewSet, MethodSerializerView):
         matches = Match.objects.bundesliga_2()
         serializer = MatchSerializer(matches, many=True)
         return Response(serializer.data)
-        
-class ItalyViewSet(viewsets.ViewSet, MethodSerializerView):
+
+class ItalyMatchesViewSet(viewsets.ViewSet):
     """
     A viewset that provides one standard action `GET`.
     """
     queryset = Match.objects.all()
-    method_serializer_classes = {
-        ('GET'): ser.MatchSerializer,
-       
-    }
+    serializer_class = MatchSerializer
 
     def list(self, request):
         """List all matches from Italian Leagues."""
