@@ -16,19 +16,19 @@ class MatchManager(models.Manager):
 
     def eng_league_2(self):
         return self.filter(division='E2')
-    
-    def la_liga_primiera(self):
-        return  self.filter(division='S1')
-    
-    def la_liga_segunda(self):
-        return  self.filter(division='S2')
-    
+
     def bundesliga_1(self):
         return self.filter(division='D1')
     
     def bundesliga_2(self):
         return  self.filter(division='D2')
     
+    def la_liga_primiera(self):
+        return  self.filter(division='S1')
+    
+    def la_liga_segunda(self):
+        return  self.filter(division='S2')
+      
     def seria_a(self):
         return  self.filter(division='I3')
     

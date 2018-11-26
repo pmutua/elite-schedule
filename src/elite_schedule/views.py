@@ -75,21 +75,40 @@ class EnglandViewSet(viewsets.ViewSet, MethodSerializerView):
 
     def list(self, request):
         """List all matches played from English Leagues."""
-        queryset = Match.objects.all()
+        queryset = Match.objects.filter(
+                Q(division__icontains="E0")|
+                Q(division__icontains="E1")|
+                Q(division__icontains="E2")|
+                Q(division__icontains="EC")
+                )
         serializer = MatchSerializer(queryset, many=True)
         return Response(serializer.data)
 
     @action(detail=False)
-    def league_1(self, request):
+    def premier_leage(self, request):
         """Lists down all ."""
-        matches = Match.objects.awaiting()
+        matches = Match.objects.eng_premier_league()
+        serializer = MatchSerializer(matches, many=True)
+        return Response(serializer.data)
+
+    @action(detail=False)
+    def conference(self, request):
+        """Lists down all English Conference matches."""
+        matches = Match.objects.eng_conference()
+        serializer = MatchSerializer(matches, many=True)
+        return Response(serializer.data)
+
+    @action(detail=False)
+    def league_1(self, request):
+        """Lists down all English League 1 matches."""
+        matches = Match.objects.eng_league_1()
         serializer = MatchSerializer(matches, many=True)
         return Response(serializer.data)
 
     @action(detail=False)
     def league_2(self, request):
-        """Lists down all."""
-        matches = Match.objects.accepted()
+        """Lists down all English League 2 matches."""
+        matches = Match.objects.eng_league_2()
         serializer = MatchSerializer(matches, many=True)
         return Response(serializer.data)
 
@@ -104,55 +123,26 @@ class SpainViewSet(viewsets.ViewSet, MethodSerializerView):
     }
     def list(self, request):
         """List all matches from Spanish Leagues."""
-        queryset = Match.objects.all()
+        queryset = Match.objects.filter(
+                Q(division__icontains="SP1")|
+                Q(division__icontains="SP2")
+                )
         serializer = MatchSerializer(queryset, many=True)
         return Response(serializer.data)
 
     @action(detail=False)
-    def league_1(self, request):
-        """Lists down all ."""
-        matches = Match.objects.awaiting()
+    def laliga_primiera(self, request):
+        """Lists down all La Liga primiera matches."""
+        matches = Match.objects.la_liga_primiera()
         serializer = MatchSerializer(matches, many=True)
         return Response(serializer.data)
 
     @action(detail=False)
-    def league_2(self, request):
-        """Lists down all."""
+    def la_liga_segunda(self, request):
+        """Lists down all La SLiga Segunda matches."""
         matches = Match.objects.accepted()
         serializer = MatchSerializer(matches, many=True)
         return Response(serializer.data)
-
-
-class ItalyViewSet(viewsets.ViewSet, MethodSerializerView):
-    """
-    A viewset that provides one standard action `GET`.
-    """
-    queryset = Match.objects.all()
-    method_serializer_classes = {
-        ('GET'): ser.MatchSerializer,
-       
-    }
-
-    def list(self, request):
-        """List all matches from Italian Leagues."""
-        queryset = Match.objects.all()
-        serializer = MatchSerializer(queryset, many=True)
-        return Response(serializer.data)
-
-    @action(detail=False)
-    def league_1(self, request):
-        """Lists down all ."""
-        matches = Match.objects.awaiting()
-        serializer = MatchSerializer(matches, many=True)
-        return Response(serializer.data)
-
-    @action(detail=False)
-    def league_2(self, request):
-        """Lists down all."""
-        matches = Match.objects.accepted()
-        serializer = MatchSerializer(matches, many=True)
-        return Response(serializer.data)
-
 
 
 class GermanyViewSet(viewsets.ViewSet, MethodSerializerView):
@@ -167,20 +157,59 @@ class GermanyViewSet(viewsets.ViewSet, MethodSerializerView):
 
     def list(self, request):
         """List all matches from German Leagues."""
-        queryset = Match.objects.all()
+        queryset = Match.objects.filter(
+                Q(division__icontains="D1")|
+                Q(division__icontains="D2")
+                )
         serializer = MatchSerializer(queryset, many=True)
         return Response(serializer.data)
 
     @action(detail=False)
-    def league_1(self, request):
-        """Lists down all ."""
-        matches = Match.objects.awaiting()
+    def bundesliga_1(self, request):
+        """Lists down all Bundesliga 1 matches."""
+        matches = Match.objects.bundesliga_1()
         serializer = MatchSerializer(matches, many=True)
         return Response(serializer.data)
 
     @action(detail=False)
-    def league_2(self, request):
-        """Lists down all."""
-        matches = Match.objects.accepted()
+    def bundesliga_2(self, request):
+        """Lists down all Bundesliga 2 matches."""
+        matches = Match.objects.bundesliga_2()
         serializer = MatchSerializer(matches, many=True)
         return Response(serializer.data)
+        
+class ItalyViewSet(viewsets.ViewSet, MethodSerializerView):
+    """
+    A viewset that provides one standard action `GET`.
+    """
+    queryset = Match.objects.all()
+    method_serializer_classes = {
+        ('GET'): ser.MatchSerializer,
+       
+    }
+
+    def list(self, request):
+        """List all matches from Italian Leagues."""
+        queryset = Match.objects.filter(
+                Q(division__icontains="I1")|
+                Q(division__icontains="I2")
+                )
+        serializer = MatchSerializer(queryset, many=True)
+        return Response(serializer.data)
+
+    @action(detail=False)
+    def seria_a(self, request):
+        """Lists down all Seria A matches."""
+        matches = Match.objects.seria_a()
+        serializer = MatchSerializer(matches, many=True)
+        return Response(serializer.data)
+
+    @action(detail=False)
+    def seria_b(self, request):
+        """Lists down all Seria B matches."""
+        matches = Match.objects.seria_b()
+        serializer = MatchSerializer(matches, many=True)
+        return Response(serializer.data)
+
+
+
