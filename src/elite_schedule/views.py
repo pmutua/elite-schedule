@@ -130,7 +130,7 @@ class TeamSearchAPIView(viewsets.ViewSet,generics.ListAPIView):
 
 class EnglandMatchesViewSet(viewsets.ViewSet,generics.ListAPIView):
     """
-        Show all English League matches.
+        Show all English Divisions matches.
         
         ----
         Returns json data about a list of matches from all English Divisions.
@@ -374,7 +374,7 @@ class EnglandMatchesViewSet(viewsets.ViewSet,generics.ListAPIView):
     
 class SpainMatchesViewSet(viewsets.ViewSet,generics.ListAPIView):
     """
-        Show all Spanish League matches.
+        Show all Spanish Divisions matches.
         
         ----
         Returns json data about a list of matches from Spanish League Divisions.
@@ -522,7 +522,7 @@ class SpainMatchesViewSet(viewsets.ViewSet,generics.ListAPIView):
 
 class GermanyMatchesViewSet(viewsets.ViewSet,generics.ListAPIView):
     """
-        Show all German League matches.
+        Show all German Divisions matches.
         
         ----
         Returns json data about a list of matches from German Divisions.
