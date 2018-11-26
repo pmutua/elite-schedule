@@ -3,31 +3,35 @@ from django.db import models
 
 
 class MatchManager(models.Manager):
-    # Add query by divisions ie EPL,Laliga etc
-    def e_1_division(self):
-        return self.filter(division='E1')
-    def e_2_division(self):
-        return  self.filter(division='E2')
-    def e_3_division(self):
-        return  self.filter(division='E3')
+    """Manager to query matches by divisions, i.e EPL, Laliga, Bundesliga, etc
+    """
+    def eng_premier_league(self):
+        return self.filter(division='E0')
+    
+    def eng_conference(self):
+        return  self.filter(division='EC')
+    
+    def eng_league_1(self):
+        return  self.filter(division='E1')
 
-    def e_1_division(self):
-        return self.filter(division='S1')
-    def e_2_division(self):
+    def eng_league_2(self):
+        return self.filter(division='E2')
+    
+    def la_liga_primiera(self):
+        return  self.filter(division='S1')
+    
+    def la_liga_segunda(self):
         return  self.filter(division='S2')
-    def e_3_division(self):
-        return  self.filter(division='S3')
-
-    def I_1_division(self):
-        return self.filter(division='I1')
-    def I_2_division(self):
-        return  self.filter(division='I2')
-    def I_3_division(self):
+    
+    def bundesliga_1(self):
+        return self.filter(division='D1')
+    
+    def bundesliga_2(self):
+        return  self.filter(division='D2')
+    
+    def seria_a(self):
         return  self.filter(division='I3')
-
-    def g_1_division(self):
-        return self.filter(division='G1')
-    def g_2_division(self):
-        return  self.filter(division='G2')
-    def g_3_division(self):
-        return  self.filter(division='G3')
+    
+    def seria_b(self):
+        return self.filter(division='I1')
+ 
