@@ -18,5 +18,10 @@ class Match(models.Model):
     draw_odd = models.CharField(max_length=20)
     away_odd = models.CharField(max_length=20)
 
-
     objects = MatchManager()
+
+    class Meta:
+        db_table = 'match'
+        managed = True
+        verbose_name = 'Match'
+        verbose_name_plural = 'Matches'

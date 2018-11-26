@@ -23,11 +23,11 @@ from drf_yasg import openapi
 
 schema_view = get_schema_view(
    openapi.Info(
-      title="Snippets API",
+      title="Elite Schedule API",
       default_version='v1',
-      description="Test description",
+      description="API providing historical results & odds to help soccer betting enthusiasts",
       terms_of_service="https://www.google.com/policies/terms/",
-      contact=openapi.Contact(email="contact@snippets.local"),
+      contact=openapi.Contact(email="pmutua@live.com"),
       license=openapi.License(name="BSD License"),
    ),
    validators=['flex', 'ssv'],
