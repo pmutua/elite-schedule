@@ -66,7 +66,7 @@ class MatchHistoryViewset(viewsets.ViewSet,generics.ListAPIView):
     queryset = Match.objects.all()
     serializer_class = MatchSerializer
 
-    def get_queryset(self, request):
+    def list(self, request):
         queryset = Match.objects.all()
         serializer = MatchSerializer(queryset, many=True)
         return Response(serializer.data)
@@ -174,7 +174,7 @@ class EnglandMatchesViewSet(viewsets.ViewSet,generics.ListAPIView):
     queryset = Match.objects.all()
     serializer_class = MatchSerializer
 
-    def get_queryset(self, request):
+    def list(self, request):
         queryset = Match.objects.filter(
                 Q(division__icontains="E0")|
                 Q(division__icontains="E1")|
@@ -418,7 +418,7 @@ class SpainMatchesViewSet(viewsets.ViewSet,generics.ListAPIView):
     queryset = Match.objects.all()
     serializer_class = MatchSerializer
 
-    def get_queryset(self, request):
+    def list(self, request):
         queryset = Match.objects.filter(
                 Q(division__icontains="SP1")|
                 Q(division__icontains="SP2")
@@ -565,7 +565,7 @@ class GermanyMatchesViewSet(viewsets.ViewSet,generics.ListAPIView):
     queryset = Match.objects.all()
     serializer_class = MatchSerializer
 
-    def get_queryset(self, request):
+    def list(self, request):
         queryset = Match.objects.filter(
                 Q(division__icontains="D1")|
                 Q(division__icontains="D2")
@@ -712,17 +712,16 @@ class ItalyMatchesViewSet(viewsets.ViewSet,generics.ListAPIView):
     queryset = Match.objects.all()
     serializer_class = MatchSerializer
 
-    def get_queryset(self, request):
-       
+    def list(self,request):
         queryset = Match.objects.filter(
-                Q(division__icontains="I1")|
-                Q(division__icontains="I2")
-                )
+            Q(division__icontains="I1")|
+            Q(division__icontains="I2")
+            )
         serializer = MatchSerializer(queryset, many=True)
         return Response(serializer.data)
 
     @action(detail=False)
-    def seria_a(self, request):
+    def seria_a(self,request):
         """
             Show all Seria A matches.
             
