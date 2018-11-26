@@ -14,6 +14,8 @@ from rest_framework.filters import (
     SearchFilter
 )
 
+from elite_schedule import serializers
+
 from django.shortcuts import render
 from rest_framework import generics
 
@@ -71,15 +73,59 @@ class EnglandMatchesViewSet(viewsets.ViewSet):
     serializer_class = MatchSerializer
 
     def list(self, request):
-        """List all matches played from English Leagues."""
+        """
+            Show all matches.
+            ----
+            Returns json data about a list of matches from English Leagues.
+            =======================================
+
+            * **URL**
+
+                /england/
+
+            * **Method:**
+
+                `GET`
+                
+            *  **URL Params**
+
+                None
+
+            * **Data Params**
+
+                None
+
+            * **Success Response:**
+
+                * **Code:** 200 <br />
+                **Content:**` ADD CONTENT HERE`
+            
+            * **Error Response:**
+
+                * **Code:** 404 NOT FOUND <br />
+                **Content:** `{ error : "Matches doesn't exist" }`
+
+                OR
+
+                * **Code:** 401 UNAUTHORIZED <br />
+                **Content:** `{ error : "You are unauthorized to make this request." }`
+
+            * **Sample Call:**
+
+                ```bash
+                curl -H "Authorization: JWT <your_token>" -H "Content-Type: application/json" http://localhost:8000/api/elite_schedule/england/
+
+                ```
+
+        """
         queryset = Match.objects.filter(
                 Q(division__icontains="E0")|
                 Q(division__icontains="E1")|
                 Q(division__icontains="E2")|
                 Q(division__icontains="EC")
                 )
-        serializer = MatchSerializer(queryset, many=True)
-        return Response(serializer.data)
+        serializer = MatchSerializer(queryset,many=True)
+        return Response(data=serializer.data)
 
     @action(detail=False)
     def premier_leage(self, request):
@@ -117,7 +163,51 @@ class SpainMatchesViewSet(viewsets.ViewSet):
     serializer_class = MatchSerializer
 
     def list(self, request):
-        """List all matches from Spanish Leagues."""
+        """
+            Show all matches.
+            ----
+            Returns json data about a list of matches from Spanish Leagues.
+            =======================================
+
+            * **URL**
+
+                /spain/
+
+            * **Method:**
+
+                `GET`
+                
+            *  **URL Params**
+
+                None
+
+            * **Data Params**
+
+                None
+
+            * **Success Response:**
+
+                * **Code:** 200 <br />
+                **Content:**` ADD CONTENT HERE`
+            
+            * **Error Response:**
+
+                * **Code:** 404 NOT FOUND <br />
+                **Content:** `{ error : "Matches doesn't exist" }`
+
+                OR
+
+                * **Code:** 401 UNAUTHORIZED <br />
+                **Content:** `{ error : "You are unauthorized to make this request." }`
+
+            * **Sample Call:**
+
+                ```bash
+                curl -H "Authorization: JWT <your_token>" -H "Content-Type: application/json" http://localhost:8000/api/elite_schedule/spain/
+
+                ```
+
+        """
         queryset = Match.objects.filter(
                 Q(division__icontains="SP1")|
                 Q(division__icontains="SP2")
@@ -148,7 +238,51 @@ class GermanyMatchesViewSet(viewsets.ViewSet):
     serializer_class = MatchSerializer
 
     def list(self, request):
-        """List all matches from German Leagues."""
+        """
+            Show all matches.
+            ----
+            Returns json data about a list of matches from German Leagues.
+            =======================================
+
+            * **URL**
+
+                /germany/
+
+            * **Method:**
+
+                `GET`
+                
+            *  **URL Params**
+
+                None
+
+            * **Data Params**
+
+                None
+
+            * **Success Response:**
+
+                * **Code:** 200 <br />
+                **Content:**` ADD CONTENT HERE`
+            
+            * **Error Response:**
+
+                * **Code:** 404 NOT FOUND <br />
+                **Content:** `{ error : "Matches doesn't exist" }`
+
+                OR
+
+                * **Code:** 401 UNAUTHORIZED <br />
+                **Content:** `{ error : "You are unauthorized to make this request." }`
+
+            * **Sample Call:**
+
+                ```bash
+                curl -H "Authorization: JWT <your_token>" -H "Content-Type: application/json" http://localhost:8000/api/elite_schedule/germany/
+
+                ```
+
+        """
         queryset = Match.objects.filter(
                 Q(division__icontains="D1")|
                 Q(division__icontains="D2")
@@ -178,7 +312,51 @@ class ItalyMatchesViewSet(viewsets.ViewSet):
     serializer_class = MatchSerializer
 
     def list(self, request):
-        """List all matches from Italian Leagues."""
+        """
+            Show all matches.
+            ----
+            Returns json data about a list of matches from Italian Leagues.
+            =======================================
+
+            * **URL**
+
+                /italy/
+
+            * **Method:**
+
+                `GET`
+                
+            *  **URL Params**
+
+                None
+
+            * **Data Params**
+
+                None
+
+            * **Success Response:**
+
+                * **Code:** 200 <br />
+                **Content:**` ADD CONTENT HERE`
+            
+            * **Error Response:**
+
+                * **Code:** 404 NOT FOUND <br />
+                **Content:** `{ error : "Matches doesn't exist" }`
+
+                OR
+
+                * **Code:** 401 UNAUTHORIZED <br />
+                **Content:** `{ error : "You are unauthorized to make this request." }`
+
+            * **Sample Call:**
+
+                ```bash
+                curl -H "Authorization: JWT <your_token>" -H "Content-Type: application/json" http://localhost:8000/api/elite_schedule/italy/
+
+                ```
+
+        """
         queryset = Match.objects.filter(
                 Q(division__icontains="I1")|
                 Q(division__icontains="I2")
