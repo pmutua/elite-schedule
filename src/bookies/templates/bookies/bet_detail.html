@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-4">
+                <a href="{% url 'web-index' %}">Back to Bets list</a>
+                {% if not bet %}
+                    <p>Sorry, this bet does not exists at this time.</p>
+                {% else %}
+                    <h2>{{ bet.question }} </h2>
+                    <p>Category: {{ bet.category }}</p>
+                    <p>Description: {{ bet.description }}</p>
+                    <p>Initiation: {{ bet.initiation }}</p>
+                    <p>Minimum Buy In: {{ bet.min_buyin }}</p>
+                    <p>Per Person Cap: {{ bet.per_person_cap }}</p>
+                    <br>
+                    <h3>Responses</h3>
+                    {% if not responses %}
+                        <h4>No responses to this bet</h4>
+                    {% else %}
+                        {% for response in responses %}
+                            <div class="panel panel-primary">
+                              <div class="panel-heading">
+                                <h3 class="panel-title">{{ response.user.username }}</h3>
+                              </div>
+                              <div class="panel-body">
+                                Answer: {{ response.answer }}<br>
+                                Amount Wagered: {{ response.amount }}
+                              </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    <h3>People who viewed this bet also viewed...</h3>
+                    {% if not recs %}
+                        <h4>No recommendations for this bet</h4>
+                    {% else %}
+                        {% for rec in recs %}
+                            <div class="panel panel-primary">
+                              <div class="panel-heading">
+                                <a href="{% url 'web-bet_detail' rec.id %}" style="color:#ffffff;"><h3 color="white" class="panel-title"> {{rec.question}} </h3></a>
+                            </div>
+                              <div class="panel-body">
+                                Description: {{ rec.description}}<br>
+                              </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

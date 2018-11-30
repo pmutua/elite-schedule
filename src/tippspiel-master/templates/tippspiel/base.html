@@ -1,0 +1,55 @@
+{% load i18n staticfiles activepage %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+    <title>tippspiel</title>
+
+    <!-- Meta -->
+    <meta charset="utf-8" />
+    <meta name="author" content="Kevin D." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+
+    <!-- Style -->
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0-alpha.1/jquery.mobile-1.2.0-alpha.1.min.css" />
+    <link rel="stylesheet" href="{% static "css/tippspiel.css" %}" />
+
+    <!-- HTML5 shim -->
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Script -->
+    <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.2.0-alpha.1/jquery.mobile-1.2.0-alpha.1.min.js"></script>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static "img/favicon.ico" %}" type="image/x-icon" />
+</head>
+<body>
+
+    <noscript>
+        <p>
+            <strong>{% trans "JavaScript is disabled!" %}</strong> {% trans "Please enable it, otherwise this app won't work." %}
+        </p>
+    </noscript>
+
+    <div data-role="page">
+
+        {% block body %}{% endblock %}
+
+        <footer data-role="footer" data-id="Persistency" data-position="fixed">
+            <div data-role="navbar" data-iconpos="top">
+                <ul>
+                    <li>{% activepage_with_icon request "tippspiel_overview" "Overview" "home" %}</li>
+                    <li>{% activepage_with_icon request "tippspiel_matchday_list" "Matchdays" "grid" %}</li>
+                    <li>{% activepage_with_icon request "tippspiel_player_list" "Ranking" "star" %}</li>
+                    <li>{% activepage_with_icon request "tippspiel_settings" "Settings" "gear" %}</li>
+                </ul>
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+</html>
