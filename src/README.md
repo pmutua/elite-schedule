@@ -1,9 +1,16 @@
-[![Build Status](https://travis-ci.org/andela-akabiru/buckyy.svg?branch=master)](https://travis-ci.org/andela-akabiru/buckyy) [![Coverage Status](https://coveralls.io/repos/github/andela-akabiru/bucket-list-api/badge.svg?branch=master)](https://coveralls.io/github/andela-akabiru/buckyy?branch=master) [![Code Climate](https://codeclimate.com/github/andela-akabiru/bucket-list-api/badges/gpa.svg)](https://codeclimate.com/github/andela-akabiru/bucket-list-api)
+[![Build Status](https://travis-ci.org/pmutua/elite-schedule.svg?branch=master)](https://travis-ci.org/pmutua/elite-schedule) [![Coverage Status](https://coveralls.io/repos/github/pmutua/elite-shedule-api/badge.svg?branch=master)](https://coveralls.io/github/pmutua/elite-schedule?branch=master) [![Code Climate](https://codeclimate.com/github/pmutua/elite-schedule-api/badges/gpa.svg)](https://codeclimate.com/github/pmutua/elite-schedule-api)
 
-# EliteSchedule :soccer: :sailboat:
+# EliteSchedule :soccer:
 
-Buckyy is a simple bucketlist API allowing consumers to perform CRUD operations on bucketlists. A user can have many bucketlists and each bucketlist
-can have many items.
+WHAT IS Elite Schedule?
+
+Football-Data is an open source football API providing historical results & odds to help football enthusiasts analyse many years of data quickly and efficiently to gain an edge over the bookmaker. Whilst other football results and odds databases do exist, Football-Data is unique in making available computer-ready data in Excel and CSV format for quantitative analysis. Simply download for free the available files, and learn more about how to use the data in Football-Data's free guide to rating systems plus Football-Data's comprehensive betting guide.
+
+Alternatively, if you are just looking for the latest results, tables and team stats, try Football-Data's livescore service, with minute-by-minute scores as the goals go in. For the latest information about teams, players and transfers, Football-Data's football news site brings together all the best football and betting news wires under one roof. Altneratively, had a look at Football-Data's football betting articles.
+
+Football-Data also brings to the football punter the best free bets and bonuses from online sports bookmakers, including £25, £50 and £100 free bet offers. The partnerships Football-Data has made with these advertising bookmakers help keep the site free for you. Use the free bet links or any of the banners on this page to find out more about these great offers.
+
+Elite Schedule is a simple sports data API allowing consumers to get soccer statistics based on different leagues.
 
 - [Getting Started](#getting-started)
 - [Dependencies](#dependencies)
@@ -14,50 +21,63 @@ can have many items.
 - [Versions](#versions)
 - [Request & Response Examples](#request--response-examples)
 - [Contributing](#contributing)
-- [Apiary Documentation](http://docs.buckyy.apiary.io)
+- [Swagger/Redoc Documentation](http://docs.elite_schedule.apiary.io)
 
 ## API Features
 
 1. User authentication with [JWT](http://jwt.io).
-2. User can perform CRUD operations on Buckelist and items resources
-3. API accepts paginated requests with limit e.g. `curl -i http://buckyy.herokuapp.com/bucketlists?limit=5&page=2`
-4. API uses Accept header to version api calls e.g. `Accept:application/vnd.buckyy.v1+json`.
-5. Apiary documentation for easier integration
+2. User can perform CRUD operations on Elite Schedule and items resources
+3. API accepts paginated requests with limit
+4. API uses Accept header to version api calls
+5. Redoc and Swagger documentation for easier integration
 
 ## Getting Started
 
-1. `git clone https://github.com/andela-akabiru/buckyy.git`
-2. `cd buckyy`
-3. `bundle install`
-4. `rake db:setup`
-5. `rails server`
+1. `git clone https://github.com/pmutua/elite_schedule.git`
+2. `cd elite_schedule`
+3. `virtualenv -p python env`
+4. `source env/bin/activate`
+5. `cd src`
+6. `pip install -r requirements/base.txt`
+7. `.manage.py runserver`
 
 The above will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Dependencies
 
-1. [Ruby](https://github.com/rbenv/rbenv)
-2. [PostgreSQL](http://www.postgresql.org/download/macosx/)
-3. [Bundler](http://bundler.io/)
-4. [Ruby on Rails](http://guides.rubyonrails.org/getting_started.html#installing-rails)
-5. [RSpec](http://rspec.info/)
+1. [Python 3 +](https://github.com/python)
+2. [Pip](https://github.com/pypa/pip)
+3. [Virtualenv](https://virtualenv.pypa.io/en/latest/)
+4. [PostgreSQL](https://www.postgresql.org/)
+
+[View all the other dependencies](./requrements/base.txt)
+
+# Settings
+
+When running `manage.py` commands you need to specify the settings environment to run the api with as  shown below.
+
+`python manage.py runserver --settings=core.settings.development`
+
+OR
+
+`python manage.py migrate --settings=core.settings.production`
 
 ## Tests
 
-    1. cd buckyy
-    2. bundle exec rake
+    1. cd elite-schedule
+    2. `.manage.py test.py`
 
 ## API Endpoints
 
-All endpoints except `/signup` require a token for authentication. The API call should have the token in Authorization header.
+All endpoints except `signup/` require a token for authentication. The API call should have the token in Authorization header.
 
-    http http://buckyy.herokuapp.com/bucketlists \
+    http http://elite-schedule.herokuapp.com/api/elite_schedule/matches/ \
     Authorization: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE0Njc2MTkxNDV9.R6VLZD4qtsdVHXZwU8bEo6S16cbNQfo7lICsNdAq00I"
 
 | EndPoint                               |                     Functionality |
 | -------------------------------------- | --------------------------------: |
 | POST /signup                           |                     Signup a user |
-| POST /auth/login                       |                        Login user |
+| POST /rest-auth/login                  |                        Login user |
 | GET /auth/logout                       |                       Logout user |
 | POST /bucketlists/                     |          Create a new bucket list |
 | GET /bucketlists/                      | List all the created bucket lists |
