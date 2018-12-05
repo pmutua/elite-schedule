@@ -1,0 +1,12 @@
+version: "3.6.2"
+
+# Define services
+services:
+  web:
+    build: .
+    command: python manage.py runserver --settings=core.settings.development 0.0.0.0:8000
+    # map a volume to container
+    volumes:
+      - .:/elite_schedule_api
+    ports:
+      - "8000:8000"
