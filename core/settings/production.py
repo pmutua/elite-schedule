@@ -6,10 +6,19 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['mysite.com', ]
 
+DATABASES['default'].update({
+    'NAME': os.getenv('DJANGO_DB_NAME'),
+    'USER': os.getenv('DJANGO_DB_USER'),
+    'PASSWORD': os.getenv('DJANGO_DB_PASSWORD'),
+    'HOST': os.getenv('DJANGO_DB_HOST'),
+    'POSRT': os.getenv('DJANGO_DB_PORT'),
+})
+
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-        'LOCATION': '127.0.0.1:11211',
+        'LOCATION': 'default-locmemcache',
+        'TIMEOUT': int(os.getenv('DJNAGO_CACHE_TIMEOUT'))
     }
 }
 
