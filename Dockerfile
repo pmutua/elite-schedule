@@ -33,6 +33,15 @@ RUN virtualenv /elite_schedule_api/scripts/pip_install.sh /elite_schedule_api
 # collect the static files
 RUN bash /elite_schedule_api/scripts/collect_static.sh /elite_schedule_api
 
+COPY nginx/elite_schedule_api.conf /etc/nginx/sites-available/elite_schedule_api.conf
+RUN rm /etc/nginx/sites-enabled/*
+RUN ln -s /etc/nginx/sites-available/elite_schedule_api.conf /etc/nginx/sites-enabled/elite_schedule_api
+
+COPY runit/nginx /etc/service/nginx
+RUN chmod +x /etc/service/nginx/run 
+
+
+
 # RUN pip install -r requirements/base.txt 
 
 # Run the app.  CMD is required to run on Heroku
