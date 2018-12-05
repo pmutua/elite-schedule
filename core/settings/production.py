@@ -4,7 +4,7 @@ from core.settings.base import *
 # Override base.py settings here 
 DEBUG = False
 
-ALLOWED_HOSTS = ['mysite.com', ]
+ALLOWED_HOSTS = ['*']
 
 DATABASES['default'].update({
     'NAME': os.getenv('DJANGO_DB_NAME'),

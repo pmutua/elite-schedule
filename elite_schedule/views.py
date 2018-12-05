@@ -14,7 +14,7 @@ from rest_framework.filters import (
     SearchFilter
 )
 from rest_framework import generics
-
+from .models import Match
 from .serializers import (MatchSerializer,)
 
 
