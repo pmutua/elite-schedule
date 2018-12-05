@@ -27,6 +27,9 @@ __pycache__/
 # DB
 *.default
 
+# VSCODE 
+
+.vscode/
 
 # Distribution / packaging
 .Python
