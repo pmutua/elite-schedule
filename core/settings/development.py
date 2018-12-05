@@ -33,33 +33,44 @@ DEBUG_TOOLBAR_PANELS = [
 
 
 
-#Use the following live settings to build on Travis CI
-if os.getenv('BUILD_ON_TRAVIS', None):
-    SECRET_KEY = "SecretKeyForUseOnTravis"
-    DEBUG = False
-    TEMPLATE_DEBUG = True
+DATABASES = {
+'default': {
+'ENGINE': 'django.db.backends.postgresql_psycopg2',
+'NAME': 'devopspy',
+'USER': 'devopspy',
+'PASSWORD': 'devopspy',
+'HOST': 'postgres',
+'PORT': 5432,
+}
+}
 
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'travis_ci_db',
-            'USER': 'travis',
-            'PASSWORD': '',
-            'HOST': '127.0.0.1',
-        }
-    }
-else:
-    #Non-travis DB configuration goes here
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': os.environ.get('DATABASE_NAME'),
-            'USER': os.environ.get('DATABASE_USER'),
-            'PASSWORD': os.environ.get('DATABASE_PASSWORD'),
-            'HOST': os.environ.get('DATABASE_HOST'),
-            'PORT': os.environ.get('DATABASE_PORT'),
-        }
-    }
+# #Use the following live settings to build on Travis CI
+# if os.getenv('BUILD_ON_TRAVIS', None):
+#     SECRET_KEY = "SecretKeyForUseOnTravis"
+#     DEBUG = False
+#     TEMPLATE_DEBUG = True
+
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.mysql',
+#             'NAME': 'travis_ci_db',
+#             'USER': 'travis',
+#             'PASSWORD': '',
+#             'HOST': '127.0.0.1',
+#         }
+#     }
+# else:
+#     #Non-travis DB configuration goes here
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#             'NAME': os.environ.get('DATABASE_NAME'),
+#             'USER': os.environ.get('DATABASE_USER'),
+#             'PASSWORD': os.environ.get('DATABASE_PASSWORD'),
+#             'HOST': os.environ.get('DATABASE_HOST'),
+#             'PORT': os.environ.get('DATABASE_PORT'),
+#         }
+#     }
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
