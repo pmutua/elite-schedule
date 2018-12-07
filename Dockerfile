@@ -1,3 +1,18 @@
+FROM python:3.6.2
+LABEL maintainer pmutua
+ENV PYTHONUNBUFFERED 1 
+RUN mkdir /elite_schedule_api
+WORKDIR /elite_schedule_api
+COPY . /elite_schedule_api/
+RUN pip install -r requirements/base.txt
+
+# Run app CMD is required to run HEroku 
+# $PORT is set by Heroku 
+CMD python manage.py runserver 0.0.0.0:$PORT 
+
+
+
+
 # # FROM python:3.5
 # FROM phusion/baseimage 
 # # See all logs in console 
@@ -51,14 +66,14 @@
 
 
 
-FROM python:3.6
+# FROM python:3.6
 
-RUN mkdir -p /usr/src/app
+# RUN mkdir -p /usr/src/app
 
-WORKDIR /usr/src/app  # specifying the working dir inside the container
+# WORKDIR /usr/src/app  # specifying the working dir inside the container
 
-COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
+# COPY requirements.txt ./
+# RUN pip install --no-cache-dir -r requirements.txt
 
-# copy current dir's content to container's WORKDIR root i.e. all the contents of the web app
-COPY . .
+# # copy current dir's content to container's WORKDIR root i.e. all the contents of the web app
+# COPY . .

@@ -33,3 +33,6 @@ exec gunicorn ${DJNAGO_WSGI_MODULE}:application \
     --bind=unix:$SOCKFILE \
     --log-level=debug \
     --log-file=-
+
+
+# Make file executable sudo chmod u+x gunicorn_start.bash
