@@ -3,25 +3,26 @@ language: python
 python:
   - "3.4"
 
-services: mysql
+services:
+  - postgresql
 
 env:
   global:
-    - DJANGO_SETTINGS_MODULE="my_site.settings"
-    - PYTHONPATH="/home/travis/build/my_github_name/my_github_project"
+    - DJANGO_SETTINGS_MODULE="core.settings.production"
+    - PYTHONPATH="/home/travis/build/pmutua/elite-schedule"
     - PIP_USE_MIRRORS=true
     - BUILD_ON_TRAVIS=true
   matrix:
-    - DJANGO=1.7 DB=mysql
+    - DJANGO=2.1.3 DB=postgresql
 
 #commands to install dependencies
 install:
   - pip install -q Django==$DJANGO
-  - pip install -q -r requirements.txt
+  - pip install -q -r requirements/base.txt
 
 before_script:
-  - mysql -e 'create database travis_ci_db;'
-  - python manage.py syncdb --noinput
+  - psql -c 'create database test_db;' -U postgres
+  # - python manage.py syncdb --noinput
 
 #command to run the test suite
 script:

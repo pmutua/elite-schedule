@@ -6,13 +6,13 @@ from .base import *
 
 ALLOWED_HOSTS = ['*']
 
-DATABASES['default'].update({
-    'NAME': os.getenv('DATABASE_NAME'),
-    'USER': os.getenv('DATABASE_USER'),
-    'PASSWORD': os.getenv('DATABASE_PASSWORD'),
-    'HOST': os.getenv('DATABASE_HOST'),
-    'PORT': os.getenv('DATABASE_PORT')
-})
+# DATABASES['default'].update({
+#     'NAME': os.getenv('DATABASE_NAME'),
+#     'USER': os.getenv('DATABASE_USER'),
+#     'PASSWORD': os.getenv('DATABASE_PASSWORD'),
+#     'HOST': os.getenv('DATABASE_HOST'),
+#     'PORT': os.getenv('DATABASE_PORT')
+# })
 
 # CACHES = {
 #     'default': {

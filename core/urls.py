@@ -38,10 +38,10 @@ schema_view = get_schema_view(
 urlpatterns = [
     # url(r'^api-auth/', include('rest_framework.urls')),
     url(r'^rest-auth/', include('rest_auth.urls')),
-    url(r'^signup/', include('rest_auth.registration.urls')),
+    url(r'^signup/', include('rest_auth.registration.urls'),name='sign-up'),
     url('admin/', admin.site.urls),
     # adding '' results to redirecting to root 
-    url('api/elite_schedule/', include('elite_schedule.urls')),
+    url('api/elite_schedule/', include('elite_schedule.urls',elite_schedule)),
     url(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     # TODO leave this with '' to start as root
     url(r'^swagger/$', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
