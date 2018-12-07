@@ -179,7 +179,7 @@ class EnglandMatchesViewSet(viewsets.ViewSet,generics.ListAPIView):
         return Response(data=serializer.data)
 
     @action(detail=False)
-    def premier_leage(self, request):
+    def premier_league(self, request):
         """
             Show all Premier League matches.
             
@@ -715,17 +715,17 @@ class ItalyMatchesViewSet(viewsets.ViewSet,generics.ListAPIView):
         return Response(serializer.data)
 
     @action(detail=False)
-    def seria_a(self,request):
+    def serie_a(self,request):
         """
-            Show all Seria A matches.
+            Show all Serie A matches.
             
             ----
-            Returns json data about a list of matches from Seria A Division.
+            Returns json data about a list of matches from Serie A Division.
             =======================================
 
             * **URL**
 
-                /italy/seria_a
+                /italy/serie_a/
 
             * **Method:**
 
@@ -752,7 +752,7 @@ class ItalyMatchesViewSet(viewsets.ViewSet,generics.ListAPIView):
             * **Sample Call:**
 
                 ```bash
-                curl -H "Authorization: JWT <your_token>" -H "Content-Type: application/json" http://localhost:8000/api/elite_schedule/italy/seria_a/
+                curl -H "Authorization: JWT <your_token>" -H "Content-Type: application/json" http://localhost:8000/api/elite_schedule/italy/serie_a/
 
                 ```
 
@@ -762,17 +762,17 @@ class ItalyMatchesViewSet(viewsets.ViewSet,generics.ListAPIView):
         return Response(serializer.data)
 
     @action(detail=False)
-    def seria_b(self, request):
+    def serie_b(self, request):
         """
-            Show all Seria B matches.
+            Show all Serie B matches.
             
             ----
-            Returns json data about a list of matches from Seria B Division.
+            Returns json data about a list of matches from Serie B Division.
             =======================================
 
             * **URL**
 
-                /italy/seria_b
+                /italy/serie_b
 
             * **Method:**
 
@@ -799,12 +799,12 @@ class ItalyMatchesViewSet(viewsets.ViewSet,generics.ListAPIView):
             * **Sample Call:**
 
                 ```bash
-                curl -H "Authorization: JWT <your_token>" -H "Content-Type: application/json" http://localhost:8000/api/elite_schedule/italy/seria_b
+                curl -H "Authorization: JWT <your_token>" -H "Content-Type: application/json" http://localhost:8000/api/elite_schedule/italy/serie_b/
 
                 ```
 
         """
-        matches = Match.objects.seria_b()
+        matches = Match.objects.serie_b()
         serializer = MatchSerializer(matches, many=True)
         return Response(serializer.data)
 

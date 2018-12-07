@@ -29,9 +29,9 @@ class MatchManager(models.Manager):
     def la_liga_segunda(self):
         return  self.filter(division='S2')
       
-    def seria_a(self):
+    def serie_a(self):
         return  self.filter(division='I1')
     
-    def seria_b(self):
+    def serie_b(self):
         return self.filter(division='I2')
  

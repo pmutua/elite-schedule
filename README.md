@@ -70,21 +70,31 @@ All endpoints except `signup/` require a token for authentication. The API call 
     http http://elite-schedule.herokuapp.com/api/elite_schedule/matches/ \
     Authorization: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE0Njc2MTkxNDV9.R6VLZD4qtsdVHXZwU8bEo6S16cbNQfo7lICsNdAq00I"
 
-| EndPoint                               |                     Functionality |
-| -------------------------------------- | --------------------------------: |
-| POST /signup                           |                     Signup a user |
-| POST /rest-auth/login                  |                        Login user |
-| GET /auth/logout                       |                       Logout user |
-| POST /bucketlists/                     |          Create a new bucket list |
-| GET /bucketlists/                      | List all the created bucket lists |
-| GET /bucketlists?page=1&limit=5        | List five bucketlists from page 1 |
-| GET /bucketlists?q=bucket              |             Search for bucketlist |
-| GET /bucketlists/:id                   |            Get single bucket list |
-| PUT /bucketlists/:id                   |            Update this bucketlist |
-| DELETE /bucketlists/:id                |     Delete this single bucketlist |
-| POST /bucketlists/:id/items/           |   Create a new item in bucketlist |
-| PUT /bucketlists/:id/items/:item_id    |          Update a bucketlist item |
-| DELETE /bucketlists/:id/items/:item_id |  Delete an item in a bucket lists |
+| EndPoint                                              |                       Functionality |
+| ----------------------------------------------------- | ----------------------------------: |
+| POST /signup/                                         |                            Register |
+| POST /rest-auth/password/reset                        |                      Reset Password |
+| POST /rest-auth/password/reset/confirm/ Reset Confirm |
+| POST /rest-auth/login/                                |                          Login user |
+| GET /rest-auth/user/                                  |                            Get User |
+| GET /rest-auth/logout/                                |                         Logout user |
+| POST /rest-auth/password/change/                      |                     Change Password |
+| GET /elite_schedule/matches/                          |                List all the matches |
+| GET /elite_schedule/team/search/?q=Juventus           |                    Search Team name |
+| GET /elite_schedule/england/                          |  List all English Divisions matches |
+| GET /elite_schedule/spain/                            |  List all Spanish Divisions matches |
+| GET /elite_schedule/germany/                          |   List all German Divisions matches |
+| GET /elite_schedule/italy/                            |  List all Italian Divisions matches |
+| GET /elite_schedule/england/premier_league            |     List all Premier League matches |
+| GET /elite_schedule/england/conference                | List all English Conference matches |
+| GET /elite_schedule/england/league_1                  |           List all League 1 matches |
+| GET /elite_schedule/england/league_2                  |           List all League 2 matches |
+| GET /elite_schedule/spain/la_liga_primiera            |   List all La Liga Primiera matches |
+| GET /elite_schedule/spain/la_liga_segunda             |    List all La Liga Segunda matches |
+| GET /elite_schedule/germany/bundesliga_1              |       List all Bundesliga 1 matches |
+| GET /elite_schedule/germany/bundesliga_2              |       List all Bundesliga 2 matches |
+| GET /elite_schedule/italy/serie_a                     |            List all Serie A matches |
+| GET /elite_schedule/italy/serie_b                     |            List all Serie B matches |
 
 ## Responses
 
@@ -99,52 +109,16 @@ The API responds with an error message and http status code whenenever it encoun
       "status": "404"
     }
 
-## Versions
-
-The API uses Accept header to version api calls e.g. `Accept:application/vnd.buckyy.v1+json`.
-No breaking changes. :smiley:
-
 ## Request & Response examples
 
-Request GET /bucketlists?page=2&limit=2
+Request GET /elite_schedule/team/search/?q=Juventus
 
-     http https://buckyy.herokuapp.com/bucketlists?page=2&limit=2 \
-     Authorization: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE0Njc2MTkxNDV9.R6VLZD4qtsdVHXZwU8bEo6S16cbNQfo7lICsNdAq00I'
+curl -H "Authorization: JWT <your_token>" -H "Content-Type: application/json" https://elite-schedule.herokuapp.com/api/elite_schedule/team/search/?q=swansea
 
-Response (application/json)
 
-    [
-        {
-            "created_by": "1",
-            "id": 3,
-            "items": [
-                {
-                    "bucketlist_id": 3,
-                    "done": false,
-                    "id": 3,
-                    "name": "Obi-Wan Kenobi",
-                    "date_created": "2016-07-04  5:16:12",
-                    "date_modified": "2016-07-04  5:16:12",
-                }
-            ],
-            "name": "eaque"
-        },
-        {
-            "created_by": "1",
-            "id": 4,
-            "items": [
-                {
-                    "bucketlist_id": 4,
-                    "done": false,
-                    "id": 4,
-                    "name": "Chewbacca",
-                    "date_created": "2016-07-04  5:16:12",
-                    "date_modified": "2016-07-04  5:16:12",
-                }
-            ],
-            "name": "non"
-        }
-    ]
+Returns json data about a single team,this will list all games a team has played both home or way.
+
+
 
 ## Application Limitations
 
@@ -162,17 +136,7 @@ Response (application/json)
 
 This project is licensed under the MIT License - see the [LICENSE.md](https://opensource.org/licenses/MIT) file for details
 
-6. Install DrfYasg
-   For additional usage examples, you can take a look at the test project in the testproj directory:
 
-$git clone https://github.com/axnsan12/drf-yasg.git$ cd drf-yasg
-$virtualenv venv$ source venv/bin/activate
-(venv) $cd testproj
-(venv)$ pip install -U -r requirements.txt
-(venv) $python manage.py migrate
-(venv)$ python manage.py shell -c "import createsuperuser"
-(venv) $python manage.py runserver
-(venv)$ firefox localhost:8000/swagger/
 
 # Notes for Football Data in csv files
 
