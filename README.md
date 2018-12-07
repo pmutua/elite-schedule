@@ -46,7 +46,6 @@ The above will get you a copy of the project up and running on your local machin
 
 [View all the other dependencies](./requrements/base.txt)
 
-
 ## API Endpoints
 
 All endpoints except `signup/` require a token for authentication. The API call should have the token in Authorization header.
@@ -54,31 +53,31 @@ All endpoints except `signup/` require a token for authentication. The API call 
     http http://elite-schedule.herokuapp.com/api/elite_schedule/matches/ \
     Authorization: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE0Njc2MTkxNDV9.R6VLZD4qtsdVHXZwU8bEo6S16cbNQfo7lICsNdAq00I"
 
-| EndPoint                                    |                       Functionality |
-| ------------------------------------------- | ----------------------------------: |
-| POST /signup/                               |                            Register |
-| POST /rest-auth/password/reset              |                      Reset Password |
-| POST /rest-auth/password/reset/confirm/     |                       Reset Confirm |
-| POST /rest-auth/login/                      |                          Login user |
-| GET /rest-auth/user/                        |                            Get User |
-| GET /rest-auth/logout/                      |                         Logout user |
-| POST /rest-auth/password/change/            |                     Change Password |
-| GET /elite_schedule/matches/                |                List all the matches |
-| GET /elite_schedule/team/search/?q=Juventus |                    Search Team name |
-| GET /elite_schedule/england/                |  List all English Divisions matches |
-| GET /elite_schedule/spain/                  |  List all Spanish Divisions matches |
-| GET /elite_schedule/germany/                |   List all German Divisions matches |
-| GET /elite_schedule/italy/                  |  List all Italian Divisions matches |
-| GET /elite_schedule/england/premier_league  |     List all Premier League matches |
-| GET /elite_schedule/england/conference      | List all English Conference matches |
-| GET /elite_schedule/england/league_1        |           List all League 1 matches |
-| GET /elite_schedule/england/league_2        |           List all League 2 matches |
-| GET /elite_schedule/spain/la_liga_primiera  |   List all La Liga Primiera matches |
-| GET /elite_schedule/spain/la_liga_segunda   |    List all La Liga Segunda matches |
-| GET /elite_schedule/germany/bundesliga_1    |       List all Bundesliga 1 matches |
-| GET /elite_schedule/germany/bundesliga_2    |       List all Bundesliga 2 matches |
-| GET /elite_schedule/italy/serie_a           |            List all Serie A matches |
-| GET /elite_schedule/italy/serie_b           |            List all Serie B matches |
+| EndPoint                                        |                       Functionality |
+| ------------------------------------------------|-----------------------------------: |
+| POST /signup/                                   |                            Register |
+| POST /rest-auth/password/reset                  |                      Reset Password |
+| POST /rest-auth/password/reset/confirm/         |                       Reset Confirm |
+| POST /rest-auth/login/                          |                          Login user |
+| GET /rest-auth/user/                            |                            Get User |
+| GET /rest-auth/logout/                          |                         Logout user |
+| POST /rest-auth/password/change/                |                     Change Password |
+| GET /api/elite_schedule/matches/                |                List all the matches |
+| GET /api/elite_schedule/team/search/?q=Juventus |                    Search Team name |
+| GET /api/elite_schedule/england/                |  List all English Divisions matches |
+| GET /api/elite_schedule/spain/                  |  List all Spanish Divisions matches |
+| GET /api/elite_schedule/germany/                |   List all German Divisions matches |
+| GET /api/elite_schedule/italy/                  |  List all Italian Divisions matches |
+| GET /api/elite_schedule/england/premier_league  |     List all Premier League matches |
+| GET /api/elite_schedule/england/conference      | List all English Conference matches |
+| GET /api/elite_schedule/england/league_1        |           List all League 1 matches |
+| GET /api/elite_schedule/england/league_2        |           List all League 2 matches |
+| GET /api/elite_schedule/spain/la_liga_primiera  |   List all La Liga Primiera matches |
+| GET /api/elite_schedule/spain/la_liga_segunda   |    List all La Liga Segunda matches |
+| GET /api/elite_schedule/germany/bundesliga_1    |       List all Bundesliga 1 matches |
+| GET /api/elite_schedule/germany/bundesliga_2    |       List all Bundesliga 2 matches |
+| GET /api/elite_schedule/italy/serie_a           |            List all Serie A matches |
+| GET /api/elite_schedule/italy/serie_b           |            List all Serie B matches |
 
 ## Responses
 
@@ -112,8 +111,6 @@ Returns json data about a single team,this will list all games a team has played
 3. Commit your changes: `git add -A && git commit -m 'Add some feature'`
 4. Push to the branch: `git push origin my-new-feature` :rocket:
 5. Submit a pull request :sunglasses:
-
-
 
 ## License
 
