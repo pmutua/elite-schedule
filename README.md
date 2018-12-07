@@ -4,13 +4,9 @@
 
 WHAT IS Elite Schedule?
 
-Football-Data is an open source football API providing historical results & odds to help football enthusiasts analyse many years of data quickly and efficiently to gain an edge over the bookmaker. Whilst other football results and odds databases do exist, Football-Data is unique in making available computer-ready data in Excel and CSV format for quantitative analysis. Simply download for free the available files, and learn more about how to use the data in Football-Data's free guide to rating systems plus Football-Data's comprehensive betting guide.
+Elite Schedule is an open source football API providing historical results & odds to help football enthusiasts analyse many years of data quickly and efficiently to gain an edge over the bookmaker. Whilst other football results and odds databases do exist, Elite Schedule is unique in making available computer-ready data by accessing data in JSON format for quantitative analysis. Elite Schedule collects data from [Football-Data](http://football-data.co.uk/) organizes it and data is available through accesing it's end points.
 
-Alternatively, if you are just looking for the latest results, tables and team stats, try Football-Data's livescore service, with minute-by-minute scores as the goals go in. For the latest information about teams, players and transfers, Football-Data's football news site brings together all the best football and betting news wires under one roof. Altneratively, had a look at Football-Data's football betting articles.
-
-Football-Data also brings to the football punter the best free bets and bonuses from online sports bookmakers, including £25, £50 and £100 free bet offers. The partnerships Football-Data has made with these advertising bookmakers help keep the site free for you. Use the free bet links or any of the banners on this page to find out more about these great offers.
-
-Elite Schedule is a simple sports data API allowing consumers to get soccer statistics based on different leagues.
+Alternatively, if you are just looking for the latest results, tables and team stats, try [Football-Data's livescore service](http://livescore.football-data.co.uk/), with minute-by-minute scores as the goals go in.
 
 - [Getting Started](#getting-started)
 - [Dependencies](#dependencies)
@@ -54,7 +50,7 @@ The above will get you a copy of the project up and running on your local machin
 
 # Settings
 
-When running `manage.py` commands you need to specify the settings environment to run the api with as  shown below.
+When running `manage.py` commands you need to specify the settings environment to run the api with as shown below.
 
 `python manage.py runserver --settings=core.settings.development`
 
@@ -338,5 +334,3 @@ Individual bookmakers
 Betting odds for weekend games are collected Friday afternoons, and on Tuesday afternoons for midweek games.
 
 Additional match statistics (corners, shots, bookings, referee etc.) for the 2000/01 and 2001/02 seasons for the English, Scottish and German leagues were provided by Sports.com (now under new ownership and no longer available).
-
-
