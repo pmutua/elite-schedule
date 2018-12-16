@@ -37,4 +37,12 @@ class Serie_A_MatchList(ListView):
 
 class Serie_B_MatchList(ListView):
     queryset= (Match.objects.serie_b())
+
+class Jackpots(ListView):
+    pass
     
+class SportPesaJackpot(ListView):
+    pass 
+
+class BetPawaJackpot(ListView):
+    pass
