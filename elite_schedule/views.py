@@ -16,3 +16,25 @@ class EnglishLeagueOneMatchList(ListView):
 
 class EnglishLeagueTwoMatchList(ListView):
     queryset= (Match.objects.eng_league_2())
+
+class BundesligaLeagueOneMatchList(ListView):
+    queryset= (Match.objects.bundesliga_1())
+
+class BundesligaLeagueTwoMatchList(ListView):
+    queryset= (Match.objects.bundesliga_2())
+
+class LaLigaPrimieraMatchList(ListView):
+    queryset= (Match.objects.la_liga_primiera())
+
+class LaligaSegundaMatchList(ListView):
+    queryset= (Match.objects.la_liga_segunda())
+
+class LaligaPrimieraMatchList(ListView):
+    queryset= (Match.objects.la_liga_primiera())
+
+class Serie_A_MatchList(ListView):
+    queryset= (Match.objects.serie_a())
+
+class Serie_B_MatchList(ListView):
+    queryset= (Match.objects.serie_b())
+    
