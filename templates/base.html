@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width , initial-scale=1, shrink-to-fit=no">
+
+        <title>
+            {% block title %} Elite Schedule{% endblock %}
+        </title>
+        {% comment %} <link   href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" {% endcomment %}
+    </head>
+    <body>
+        <div>
+            <div class="container">
+                <nav class="nav">
+                    <div class ="navbar-brand">Elite Schedule</div>
+                    <a class="nav-link" href={ % url 'elite_schedule:MatchList '%}>
+                        Matches
+                    </a>
+                </nav>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class = "col-sm-8 ">
+                    {% block main %} {% endblock %}
+                </div class ="col-sm-3 offset-sm-1 ">
+                    {% block sidebar %} {% endblock %}
+                <div>
+
+                </div>
+            </div>
+    </body>
+
+
+</html>
