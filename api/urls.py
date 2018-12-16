@@ -1,8 +1,9 @@
 from django.conf.urls import url
-from elite_schedule import views
+from api import views
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
+
 router.register(r'matches', views.MatchHistoryViewset, base_name='match')
 router.register(r'team/search/', views.TeamSearchAPIView, base_name='team_search')
 router.register(r'england', views.EnglandMatchesViewSet, base_name='emgland')

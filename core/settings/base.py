@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'rest_auth.registration',
     'elite_schedule',
     'drf_yasg',
+    'api',
 ]
 
 MIDDLEWARE = [

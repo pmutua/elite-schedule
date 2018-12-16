@@ -1,4 +1,4 @@
-from .models import Match
+from elite_schedule.models import Match
 from rest_framework import serializers,fields
 
 class MatchSerializer(serializers.ModelSerializer):
