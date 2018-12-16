@@ -25,3 +25,6 @@ class Match(models.Model):
         managed = True
         verbose_name = 'Match'
         verbose_name_plural = 'Matches'
+
+    def __str__(self):
+        return self.home_team

@@ -42,6 +42,7 @@ urlpatterns = [
     url('admin/', admin.site.urls),
     # adding '' results to redirecting to root 
     url('api/', include('api.urls')),
+    url('elite_schedule/', include('elite_schedule.urls')),
     url(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     # TODO leave this with '' to start as root
     url(r'^swagger/$', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
