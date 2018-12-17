@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ object.title }} - {{ block.super }}
+{% endblock %}
+
+{% block main %}
+<h1> {{ object }}</hi>
+<p class="lead">
+{{ object.plot }}
+</p>
+{% endblock %}
+
+{% block sidebar %}
+<div>
+Add detailed info about a team 
+    <span class="badge badge-primary">
+        {{ object.get_rating_dsplay }}
+    </span>
+</div>
+
+{% endblock %}
+

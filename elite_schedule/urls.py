@@ -18,4 +18,6 @@ urlpatterns = [
     path('serie_a', views.Serie_A_MatchList.as_view(),name='SerieA'),
     path('serie_b', views.Serie_B_MatchList.as_view(),name='SerieB'),
 
+    path('match/<int:pk>', views.MatchDetail.as_view(),name='MatchDetail')
+
 ]
