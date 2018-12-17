@@ -1,51 +1,14 @@
-<html>
-    <head>
-        <title>
-            Csv file upload and processing : Django Example : ThePythonDjango.Com
-        </title>
-    </head>
-    <body style="margin-top: 30px;margin-left: 30px;">
-        <form action="{% url "elite_schedule:index" %}" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <input type="file"
-                   title="Upload excel file"
-                   name="excel_file"
-                   style="border: 1px solid black; padding: 5px;"
-                   required="required">
-            <p>
-            <input type="submit"
-                   value="Upload"
-                   style="border: 1px solid green; padding:5px; border-radius: 2px; cursor: pointer;">
-        </form>
+{% extends "base.html" %}
 
-        <p></p>
-        <hr>
-
-        {% for game in csv_data %}
-          
-                {{game}}&nbsp;&nbsp;
-        <table>
-            <thead>
-                <tr>
-                    <th colspan="2">The table header</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    {% comment %} <td>Home:{{game}}</td> {% endcomment %}
-                    {% comment %} <td>Away{{game}}</td> {% endcomment %}
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td colspan="2">The table footer</td>
-                </tr>
-            </tfoot>
-        </table>
-                
-
-                
-            <br>
-        {% endfor %}
-    </body>
-</html>
+{% block content %}
+  <h1>Local Library Home</h1>
+  <p>Welcome to LocalLibrary, a website developed by <em>Mozilla Developer Network</em>!</p>
+  <h2>Dynamic content</h2>
+  <p>The library has the following record counts:</p>
+  <ul>
+    <li><strong>Books:</strong> {{ num_books }}</li>
+    {% comment %} <li><strong>Copies:</strong> {{ num_instances }}</li> {% endcomment %}
+    {% comment %} <li><strong>Copies available:</strong> {{ num_instances_available }}</li> {% endcomment %}
+    {% comment %} <li><strong>Authors:</strong> {{ num_authors }}</li> {% endcomment %}
+  </ul>
+{% endblock %}

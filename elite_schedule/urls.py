@@ -6,6 +6,7 @@ from . import views
 app_name = 'elite_schedule'
 
 urlpatterns = [
+    path('',views.index, name='index'),
     path('matches', views.MatchList.as_view(),name='MatchList'),
     path('english_premier_league', views.EnglishPremierLeagueMatchList.as_view(),name='EnglishPremierLeague'),
     path('english_conference', views.EnglishConferenceMatchList.as_view(),name='EnglishConference'),
