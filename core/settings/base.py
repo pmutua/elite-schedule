@@ -58,7 +58,12 @@ INSTALLED_APPS = [
     'elite_schedule',
     'drf_yasg',
     'api',
+    'crispy_forms',
+    # 'telegrambot',
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

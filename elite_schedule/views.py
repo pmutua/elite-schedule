@@ -2,6 +2,11 @@ from django.views.generic import ListView,DetailView
 from django.shortcuts import render
 
 from .models import Match
+import operator
+
+from django.db.models import Q
+
+
 
 
 def index(request):
@@ -31,6 +36,28 @@ def index(request):
 
 class MatchList(ListView):
     model = Match
+
+
+class TeamSearchListView(MatchList):
+    """
+    Display a Team matches List page filtered by the search query.
+    """
+    paginate_by = 10
+
+    def get_queryset(self):
+        result = super(TeamSearchListView, self).get_queryset()
+
+        query = self.request.GET.get('q')
+        if query:
+            query_list = query.split()
+            result = result.filter(
+                reduce(operator.and_,
+                       (Q(title__icontains=q) for q in query_list)) |
+                reduce(operator.and_,
+                       (Q(content__icontains=q) for q in query_list))
+            )
+
+        return result
     
 class MatchDetail(DetailView):
     model = Match
