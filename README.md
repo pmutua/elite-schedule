@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/pmutua/elite-schedule.svg?branch=master)](https://travis-ci.org/pmutua/elite-schedule) [![Coverage Status](https://coveralls.io/repos/github/pmutua/elite-shedule-api/badge.svg?branch=master)](https://coveralls.io/github/pmutua/elite-schedule?branch=master) [![Code Climate](https://codeclimate.com/github/pmutua/elite-schedule-api/badges/gpa.svg)](https://codeclimate.com/github/pmutua/elite-schedule-api)
+[![CircleCI](https://circleci.com/gh/pmutua/elite-schedule/tree/master.svg?style=svg)](https://circleci.com/gh/pmutua/elite-schedule/tree/master)
 
 # EliteSchedule :soccer:
 
