@@ -32,13 +32,13 @@ class Match(models.Model):
     def __str__(self):
         return self.home_team
 
-def team_directory_path_with_uuid(
-    instance, filename):
-    return '{}/{}'.format(instance.team_id,uuid4())
+# def team_directory_path_with_uuid(
+#     instance, filename):
+#     return '{}/{}'.format(instance.team_id,uuid4())
 
-class TeamImage(models.Model):
-    image = models.ImageField(upload_to=team_directory_path_with_uuid)
-    uploaded= models.DateTimeField(auto_now_add=True)
-    Team= models.ForeignKey(Team,on_delete=models.CASCADE)
+# class TeamImage(models.Model):
+#     image = models.ImageField(upload_to=team_directory_path_with_uuid)
+#     uploaded= models.DateTimeField(auto_now_add=True)
+#     Team= models.ForeignKey(Team,on_delete=models.CASCADE)
     
 
