@@ -58,7 +58,6 @@ INSTALLED_APPS = [
     'elite_schedule',
     'drf_yasg',
     'api',
-    'crispy_forms',
     # 'telegrambot',
 ]
 
