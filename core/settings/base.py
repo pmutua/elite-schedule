@@ -58,7 +58,7 @@ INSTALLED_APPS = [
     'elite_schedule',
     'drf_yasg',
     'api',
-    # 'telegrambot',
+    'crispy_forms'
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
