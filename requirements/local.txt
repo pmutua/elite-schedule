@@ -1,5 +1,0 @@
--r test.txt
--r prod.txt
- 
-django-extensions==1.9.0
-ipython==7.2.0
