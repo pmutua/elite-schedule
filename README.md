@@ -1,5 +1,3 @@
-[![CircleCI](https://circleci.com/gh/pmutua/elite-schedule/tree/master.svg?style=svg)](https://circleci.com/gh/pmutua/elite-schedule/tree/master)
-
 # EliteSchedule :soccer:
 
 Elite Schedule is an open source football API providing historical results & odds to help football enthusiasts analyse many years of data quickly and efficiently to gain an edge over the bookmaker. Whilst other football results and odds databases do exist, Elite Schedule is unique in making available computer-ready data by accessing data in JSON format for quantitative analysis. Elite Schedule collects data from [Football-Data](http://football-data.co.uk/) organizes it and data is available through accesing it's end points.
