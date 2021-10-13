@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Division</th>
+                    <th>Date</th>
+                    <th>Home Team</th>
+                    <th>Away Team</th>
+                    <th>Home Goal</th>
+                    <th>Away Goal</th>
+                    <th>Home Odd</th>
+                    <th>Draw Odd</th>
+                    <th>Away Odd</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for match in match_list %}
+                <tr>
+                    <td valign="top"><code>{{ match.id }}</code></td>
+                    <td valign="top">{{ match.division }}</td>
+                    <td valign="top">{{ match.date}}</td>
+                    <td valign="top">{{ match.home_team }}</td>
+                    <td valign="top">{{ match.away_team}}</td>
+                    <td valign="top">{{ match.home_goal }}</td>
+                    <td valign="top">{{ match.away_goal }}</td>
+                    <td valign="top">{{ match.home_odd}}</td>
+                    <td valign="top">{{ match.draw_odd}}</td>
+                    <td valign="top">{{ match.away_odd}}</td>
+                </tr>
+                {% empty %}
+                    <tr>
+                    <td colspan="6" class="text-center">No match exist</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </body>
+
+</html>
